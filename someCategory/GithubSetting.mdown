@@ -1,0 +1,51 @@
+# Github SSH 設定
+---
+
+要連結 Github 有兩種方法，一種是用 SSH 公鑰授權，另外一種是 https，雖然說 https 在使用上沒有 port 擋不擋問題，但用 SSH 可以了卻一樁重複輸入帳密的瑣事。
+
+### 生成金鑰 
+設定金鑰，首先，你要有金鑰。   
+cd 到帳戶主目錄下的 .ssh 目錄看看：
+    
+    $ cd ~/.ssh
+    $ ls		 
+    id_dsa	id_dsa.pub    know_hosts
+    
+SSH 金鑰預設就是存在帳戶主目錄下的 .ssh ，端看有沒有 something 和 something.pub 的一對檔，這個 something 通常叫做 id_dsa 或 id_rsa。  
+有 .pub 尾碼的檔就是公鑰，另一個檔是私鑰。假如沒有這些檔，或者根本連 .ssh 都沒有，莫慌，用 ssh-keygen 創建就好：
+
+    $ ssh-keygen -t rsa -C “your_email@example.com”
+    Generating public/private rss by pair
+
+然後會要你 Enter 一些有的沒的。   
+第一行是確認保存公開金鑰的位置，如我自己本身有 Homestead 的金鑰，要另建 Github 的可以在這個地方改檔名（/Users/mememe/.ssh/id_rsa_github），就不必將原先的取代。   
+二三行是讓你設定密碼兩次。如果都不想設定可以全部留空：
+    
+    Enter file in which to save the key (/Users/you/.ssh/id_rsa):
+    Enter passphrase (empty for no passphrase):
+    Enter same passphrase again:
+    
+看到 fingerprint 就表示，你好了：
+
+    Your identification has been saved in /Users/you/.ssh/id_rsa.
+    Your public key has been saved in /Users/you/.ssh/id_rsa.pub.
+    The key fingerprint is:
+    09:ac:00:a9:66:43:99:bb:16:cf:a0:81:24:8f:c6:28
+
+
+### 授權
+
+接著要把公鑰（_.pub)，複製貼到 Github 上。   
+
+複製公鑰有兩種。   
+壹、  
+
+
+    $ cat ~/.ssh/id_rsa.pub
+    
+伴隨而來的是一堆亂碼，選取複製它。  
+貳、
+    
+    $ clip < ~/.ssh/id_rsa.pub
+    
+他就直接把〔方式・壹〕的那堆亂碼自動複製起來了，但不會被看到。
