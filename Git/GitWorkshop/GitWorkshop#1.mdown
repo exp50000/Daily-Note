@@ -56,19 +56,19 @@ Repository - 簡稱repo 倉儲或儲存庫
 
 ####touch a.txt
 
-	_Working Directory_ -> Index(Stage) -> Local Repository
+	"Working Directory" -> Index(Stage) -> Local Repository
 	
 新增 a.txt 到 Working Directory（工作目錄）
 
 
 ####git add a.txt
 	
-	Working Directory -> _Index(Stage)_ -> Local Repository
+	Working Directory -> "Index(Stage)" -> Local Repository
 
 給 a.txt 索引，讓他進入 Stage 狀態
 
 ####gti commit -m "add a.txt"
 
-	Working Directory -> Index(Stage) -> _Local Repository_
+	Working Directory -> Index(Stage) -> "Local Repository"
 
 把 a.txt 加入版本控制中
