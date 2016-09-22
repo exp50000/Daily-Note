@@ -1,0 +1,6 @@
+#Git Workshop
+公司內，由澧萱老師主講的 Git Workshop，深入淺出 Git 的運作機制、實際操作不管 GUI 還是 Command Line，概括時下主流的平台 GitHub，率眾一窺 Git 的究竟。
+
+---
+
+- [第一堂](Git/GitWorkshop/GitWorkshop#1.mdown)（[點我看簡報](https://speakerdeck.com/vc7/git-workshop-01))

@@ -1,0 +1,74 @@
+#Git Workshop - Session 1
+
+講師：Vincent Chen 日期：2016.09.22
+
+---
+
+##為什麼要做版本控制
+* 怕把東西改壞掉
+* 記錄自己做了什麼
+* 想備份
+* 想到其他電腦做同樣的專案
+
+##版本控制系統，分為
+
+集中式與分散式，其最大的差別在於_集中式需要連著網路才能存取和操作_，
+因為它的 Repository 只有一個，就在遠端，
+分散式則有 Remote 和 Local 的區別
+
+###集中式
+* TFVC
+* SVN
+
+既有的平台：Bitbucket、VS Online（滿強的，有空可摸摸看）、TFS、SVN
+
+###分散式
+
+* Git
+
+既有的平台：Bitbucket、VS Online、GitLab、GitHub
+
+
+##使用 Git
+
+* GUI
+* Command Line
+
+建議從 Command Line 著手
+不要看書，從網路上找資源
+
+###基本操作
+
+	$ cd /to/your/path
+	$ git init //初始化 git 儲存庫
+	$ touch a.txt //在工作目錄下新增檔案
+	$ git add a.txt //把 a.txt 加入 Stage
+	$ git commit -m "add a.txt" //把變更加入到版本控制
+
+現在來逐行解釋：
+
+####git init
+
+Repository - 簡稱repo 倉儲或儲存庫
+.git（隱藏資料夾）在本地端存放跟 git 有關係的東西的地方
+
+之後為 Git 的三個階段：
+
+####touch a.txt
+
+	_Working Directory_ -> Index(Stage) -> Local Repository
+	
+新增 a.txt 到 Working Directory（工作目錄）
+
+
+####git add a.txt
+	
+	Working Directory -> _Index(Stage)_ -> Local Repository
+
+給 a.txt 索引，讓他進入 Stage 狀態
+
+####gti commit -m "add a.txt"
+
+	Working Directory -> Index(Stage) -> _Local Repository_
+
+把 a.txt 加入版本控制中
