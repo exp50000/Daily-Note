@@ -3,4 +3,4 @@
 
 ---
 
-- [第一堂](GitWorkshop#1.mdown)（[點我看簡報](https://speakerdeck.com/vc7/git-workshop-01))
+- [第一堂](GitWorkshop-1.mdown)（[點我看簡報](https://speakerdeck.com/vc7/git-workshop-01))
