@@ -37,6 +37,7 @@
      Deleted branch master (was 5f5b74d)
     $git branch master 5f5b74d
     ```
+
 ### 打錯 commit 訊息
 
 ```
@@ -57,7 +58,7 @@ $git commit --amend -m "new message"
 
 ## branch
 
-! 分支的本質是儲存 commit id 的檔案，並沒有存分支上所有 commit 的過程 !
+**! 分支的本質是儲存 commit id 的檔案，並沒有存分支上所有 commit 的過程 !**
 
 master 當建立 repo 時機器預設的 branch 名稱
 
@@ -149,7 +150,7 @@ $git pull [remote] [branch]
 於是乎，rebase 出現了（解決遠端與本地端不同步的狀況，讓圖更簡單明瞭，之後會講到）！
 
 
-! pull ＝ fetch + merge !
+**! pull ＝ fetch + merge !**
 ```
 $git fetch
 $git merge origin/[branch name]

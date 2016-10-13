@@ -6,7 +6,7 @@
 
 ###怎麼比較版本間的差異
 
-	$ git diff commit-id-1 commit-id-2
+	$ git diff [commit-id-1] [commit-id-2]
 
 便會以 commit-id-1 為基準，與 commit-id-2 做比較
 
