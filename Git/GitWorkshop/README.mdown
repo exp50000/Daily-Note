@@ -4,3 +4,5 @@
 ---
 
 - [第一堂](GitWorkshop-1.mdown)（[點我看簡報](https://speakerdeck.com/vc7/git-workshop-01))
+- [第二堂](GitWorkshop-2.mdown)（[點我看簡報](https://speakerdeck.com/vc7/git-workshop-02))
+- [第三堂](GitWorkshop-3.mdown)（[點我看簡報](https://speakerdeck.com/vc7/git-workshop-03)）

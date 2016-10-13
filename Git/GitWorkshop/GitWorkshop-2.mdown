@@ -1,0 +1,111 @@
+#Git Workshop - Session 2
+
+講師：陳澧萱 Vincent Chen 日期：2016.9.30
+
+---
+
+###怎麼比較版本間的差異
+
+	$ git diff commit-id-1 commit-id-2
+
+便會以 commit-id-1 為基準，與 commit-id-2 做比較
+
+
+###維運與開發同時進行時，如何規劃分支
+
+可以參考 git flow
+不讓維運與開發的分之差太多
+本質差太多則另開 Repo
+
+## branch（分支）
+
+HEAD 為目前所在位置
+不要隨便移動 HEAD 的位置，也不要隨便移動 HEAD 指向的東西
+而 HEAD 通常指向像的東西就是某個 branch
+branch 指向某個 commit ID
+
+這就是 branch
+
+---
+
+###為何用 branch
+
+- 隔離工作環境
+	- 多人協作
+	- 不同階段發布
+	- 試做
+
+### 新增 branch 並 commit
+
+	$ git branch my-branch
+	$ git checkout my-branch
+	
+
+逐條解釋解釋：
+
+#### git branch my-branch
+-branch - 新增新的 branch
+-mybranch - 新 branch 的名稱
+
+#### git checkout my-branch
+-checkout - 切換工作所在位置的指令
+可查查還可 checkout 哪些？
+
+這兩條可合併為：
+
+	$ git checkout -b my-branch
+
+新增新的 branch 並切換成它
+
+###合併 branch
+
+	$ git checkout master
+	$ git merge my-branch
+
+###Fast-forward
+- 快轉機制 
+- 如果不能透過 FF 來達成 merge 的效果，則快轉就不會被觸發
+	- branch 新增了 commit，在還沒 merge 之前，master 也新增了 commit，此時不會FF
+另外，可強制“不” Fast-forward，指令為
+
+	$ git merge --no-ff my-branch
+
+
+###reset
+如要還原到某個 commit
+
+	$ git reset commit-id
+
+
+###衝突（Conflict）
+
+衝突發生在 merge 之前，同時更動同一個檔案
+
+####衝突的標示
+
+	<<<<<<<
+	=======
+	>>>>>>>
+
+用 vim 做修改
+決定去留，把標示移除
+
+解決完成必須 commit
+
+	$ git add .
+	$ git commit -m "Merge branch 'my-branch'"
+
+
+__注意!!__ 無法解決時，必須退出 merge 模式
+
+	$ git merge --abort
+
+__注意!!__ 先檢查檔案性質、邏輯、能否編譯，再決定是否要 merge 或 commit
+
+
+###可以藉由 .git/ 中的檔案做什麼事
+
+- 改 branch 名稱： 直接從 .git/refs/heads 去更改檔名（暗黑作法）
+- 可從 .git/refs/heads 去更改 head 目前所在的位址（!! 強烈建議不要亂動 !!）
+
+

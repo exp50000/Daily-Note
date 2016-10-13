@@ -1,0 +1,163 @@
+# Git Workshop - Session 3
+
+講師：陳澧萱 Vincent Chen 日期：2016.10.07
+
+---
+
+### Merge Tool
+
+太多 conflict 可能是離開主線太久
+
+
+### 避免快轉的原因
+
+- 保留分支的特徵：容易辨識也好追蹤
+- 避免因為快轉而變更主線的特徵
+
+### Git 的三個階段
+
+- git reset -- <file>
+- git checkout -- <file>
+
+因為有時檔案名稱會跟 branch 名稱相同，加上 "--" 代表是針對某個檔案而不是 branch
+
+### 救回 branch
+
+- 用 ``git relog`` 找到該 branch 最後 commit 的位置，再把 branch 加回到那個位置上
+
+    ```
+    $git relog
+    $git branch branchName [commit id]
+    ```
+
+- 當刪除 branch 的時候，會給你 branch name 還有 commit id，根據這些訊息可以也把 branch 加回來
+
+    ```
+    $git branch -D master
+     Deleted branch master (was 5f5b74d)
+    $git branch master 5f5b74d
+    ```
+### 打錯 commit 訊息
+
+```
+$git commit --amend -m "new message"
+```
+
+可更改最後一個 commit 的名稱，commit id 也會跟著改變
+
+
+### 便捷的指令
+
+可運用
+
+	$vim /.gitconfig
+
+去設定 Alias(別名)
+
+
+## branch
+
+! 分支的本質是儲存 commit id 的檔案，並沒有存分支上所有 commit 的過程 !
+
+master 當建立 repo 時機器預設的 branch 名稱
+
+origin 當 remote 時 機器預設的名稱
+
+
+---
+
+## Remote
+
+分成兩部分：從本地道遠端、從遠端到本地，開始：
+
+### 從本地到遠端
+
+#### GitHub
+
+- SSH - 遠端有公鑰，本地有私鑰，只要對應到便可直接傳輸
+- HTTPS - 使用 Https 傳輸，需手動輸入帳號密碼（麻煩）
+
+#### 在 GitHub 上建立新專案
+
+Create New Repository
+
+#### 建立 remote 並 push 到 GitHub
+
+```
+$git remote add origin [GitHub 的 HTTPS 或 SSH]
+$git remote -v
+ origin [GitHub 的 HTTPS 或 SSH] (fetch)
+ origin [GitHub 的 HTTPS 或 SSH] (push)
+$git push -u origin master
+```
+
+- 第一行表示
+    
+    新增 remote 位置，origin 是你的 remote 名稱， 
+    
+    而在 clone 的時候，就會送 origin 給你
+
+- 第二行就是 把你本地的分支(master) 推送到遠端 remote 的位置(origin)
+
+#### 更動 remote
+- 變更 remote 名稱
+    ```
+    $git remote rename [old] [new]
+    ```
+- 移除本地端 repo 中的 remote
+    ```    
+	$git remote remove [remote name]
+	```
+- 修改 remote 位置
+	```
+	$git set-url [name] [new URL]
+	```
+
+### 從遠端到本地
+
+#### 更新本地端
+
+假如剛剛 push 的時候，有加上 -u(upstream)，指令就可以縮成這樣：
+```
+$git fetch
+$git pull
+```
+否則：
+```
+$git fetch [remote] [branch]
+$git pull [remote] [branch]
+```
+
+- git fetch - 只是去抓遠端目前所在的位置，不會真的更新本地端的位置
+- git pull - pull 會自動抓遠端位置，然後直接合併(merge)到本地端的 branch，
+    把變更的檔案下載下來
+
+#### 當遠端比本地端新
+
+像這樣，就得就得先 fetch 確定遠端的變更和位置後，
+
+再來 merge 或是 pull，來更新本地端的分支和檔案內容
+
+#### 為什麼要先 fetch 再 pull？
+
+有時候純粹只是想知道遠端的狀態並不是真的想更新
+
+了解遠端的更新後，再來決定如何更新到本地端
+
+因為 pull 會自動 merge，conflict 就有可能產生了
+
+於是乎，rebase 出現了（解決遠端與本地端不同步的狀況，讓圖更簡單明瞭，之後會講到）！
+
+
+! pull ＝ fetch + merge !
+```
+$git fetch
+$git merge origin/[branch name]
+```
+
+
+
+
+
+
+
