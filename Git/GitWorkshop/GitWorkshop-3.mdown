@@ -38,6 +38,8 @@
     $git branch master 5f5b74d
     ```
 
+
+
 ### 打錯 commit 訊息
 
 ```
